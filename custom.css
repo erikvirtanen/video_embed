@@ -1,0 +1,8 @@
+.vjs-control-hide {
+	display: none !important;
+}
+
+.vjs-ff {
+	background: #000;
+	cursor: pointer;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Video.js | HTML5 Video Player</title>
+
+  <!-- Chang URLs to wherever Video.js files will be hosted -->
+  <link href="video-js.css" rel="stylesheet" type="text/css">
+  <link href="custom.css" rel="stylesheet" type="text/css">
+  <!-- video.js must be in the <head> for older IEs to work. -->
+  <script src="video.js"></script>
+
+  <!-- Unless using the CDN hosted version, update the URL to the Flash SWF -->
+  <script>
+    _V_.options.flash.swf = "video-js.swf";
+  </script>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    var playButtonCheck = setInterval(function(){
+      $("div.vjs-big-play-button").each(function(){
+        clearInterval(playButtonCheck);
+        $("div.vjs-big-play-button").click(function(){
+          //$(this).html("sending request...");
+          console.log("I clicked it");
+        });
+      });
+    //something like this? yes, but im not sure about .load() what it do? i found this: Description: Load data from the server
+    //and place the returned HTML into the matched element... 
+    //I guess it's only called when the element has fully loaded. there is also javascript's .onload event
+    // i think we can just use $().each(function()) to set events, if $() is empty no events will be set and interval will be active.
+
+    //ok works
+    //is there a way to make the pdf viewable online? haven't seen ok it's only 1.6 mb I think
+    }, 10);
+  });
+</script>
+</head>
+<body>
+  
+<section class="container wrap">
+  <video id="div_video" class="video-js vjs-default-skin" controls preload="none" width="640" height="264" poster="minimalist.jpg">  
+  </video>
+</section>
+
+<div>
+  YouTube link: <input type="text" id="videoLink" value="http://www.youtube.com/watch?v=p1WL9UjQ9nY" style="width: 430px;">
+  <button onclick="setSource($('#videoLink').val())">Send to Player</button>
+</div>
+
+<!-- 
+http://www.youtube.com/watch?v=dmLSM9zM0ME 
+http://www.youtube.com/watch?v=-XW2Ur1KhYo
+-->
+
+<!--   <video id="div_video" class="video-js vjs-default-skin" controls preload="none" width="640" height="264"
+    poster="minimalist.jpg"
+    data-setup="{}">
+it works! so now I need to look into clearing the cache? yes
+  <source src='http://asdf.us/sjproxy.cgi?url=http://www.youtube.com/watch?v=xbJqPlkVN-I' type='video/flv' />
+<source src="http://video-js.zencoder.com/oceans-clip.mp4" type='video/mp4' />
+<source src="http://video-js.zencoder.com/oceans-clip.webm" type='video/webm' />
+<source src="http://video-js.zencoder.com/oceans-clip.ogv" type='video/ogg' />
+<track kind="captions" src="demo.captions.vtt" srclang="en" label="English"></track>Tracks need an ending tag thanks to IE9
+</video> -->
+
+<script type="text/javascript" src="app.js"></script>
+</body>
+</html>
+
